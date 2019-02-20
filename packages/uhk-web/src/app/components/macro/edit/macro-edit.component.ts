@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Macro, MacroAction } from 'uhk-common';
 
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 
 import { MacroActions } from '../../../store/actions';

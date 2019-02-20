@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Keymap } from 'uhk-common';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { combineLatest, first, map, pluck, publishReplay, refCount, switchMap } from 'rxjs/operators';
 import 'rxjs/add/operator/let';
 

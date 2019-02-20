@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store, Action } from '@ngrx/store';
 import { map, pairwise, tap, withLatestFrom } from 'rxjs/operators';
 
@@ -15,8 +15,8 @@ import { findNewItem } from '../../util';
 export class MacroEffects {
 
     @Effect({ dispatch: false }) remove$: any = this.actions$
-        .ofType<MacroAction>(MacroActions.REMOVE)
         .pipe(
+            ofType<MacroAction>(MacroActions.REMOVE),
             tap(action => this.store.dispatch(KeymapActions.checkMacro(action.payload))),
             withLatestFrom(this.store),
             map(([action, state]) => state.userConfiguration.macros),
@@ -31,8 +31,8 @@ export class MacroEffects {
         );
 
     @Effect({ dispatch: false }) addOrDuplicate$: any = this.actions$
-        .ofType<MacroAction>(MacroActions.ADD, MacroActions.DUPLICATE)
         .pipe(
+            ofType<MacroAction>(MacroActions.ADD, MacroActions.DUPLICATE),
             withLatestFrom(this.store.let(getMacros())
                 .pipe(
                     pairwise()

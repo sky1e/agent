@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Keymap } from 'uhk-common';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { combineLatest, publishReplay, refCount } from 'rxjs/operators';
 
 import { AppState } from '../../../store';

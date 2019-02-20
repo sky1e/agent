@@ -3,8 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState, getUserConfiguration } from '../../../store';
 import { SetUserConfigurationValueAction } from '../../../store/actions/user-config';
 import { SliderPips } from '../../slider-wrapper/slider-wrapper.component';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { UserConfiguration } from 'uhk-common';
 
 @Component({

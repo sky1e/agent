@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import {
@@ -69,7 +68,7 @@ export function reducer(state = initialState, action: Action & { payload?: any }
                 break;
             }
 
-            const newKeymap = Object.assign(new Keymap(), keymapToRename, {name});
+            const newKeymap = Object.assign(new Keymap(), keymapToRename, { name });
 
             changedUserConfiguration.keymaps = insertItemInNameOrder(
                 state.keymaps,
@@ -168,8 +167,7 @@ export function reducer(state = initialState, action: Action & { payload?: any }
                                         setKeyActionToLayer(layer, moduleIndex, keyIndex, null);
                                     }
                                 }
-                            }
-                            else {
+                            } else {
                                 setKeyActionToLayer(layer, moduleIndex, keyIndex, clonedAction);
                             }
                         }
@@ -219,7 +217,7 @@ export function reducer(state = initialState, action: Action & { payload?: any }
 
             const duplicate = state.macros.some((macro: Macro) => {
                 if (macro.id === action.payload.id) {
-                   macroToRename = macro;
+                    macroToRename = macro;
                 }
 
                 return macro.id !== action.payload.id && macro.name === name;
@@ -346,12 +344,16 @@ export function reducer(state = initialState, action: Action & { payload?: any }
 
 export function getUserConfiguration(): (state$: Observable<AppState>) => Observable<UserConfiguration> {
     return (state$: Observable<AppState>) => state$
-        .map(state => state.userConfiguration);
+        .pipe(
+            map(state => state.userConfiguration)
+        );
 }
 
 export function getKeymaps(): (state$: Observable<AppState>) => Observable<Keymap[]> {
     return (state$: Observable<AppState>) => state$
-        .map(state => state.userConfiguration.keymaps);
+        .pipe(
+            map(state => state.userConfiguration.keymaps)
+        );
 }
 
 export function getKeymap(abbr: string) {

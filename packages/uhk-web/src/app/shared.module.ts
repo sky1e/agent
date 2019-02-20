@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotifierModule } from 'angular-notifier';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
-import { DragulaModule } from 'ng2-dragula/ng2-dragula';
-import { NgxSelectModule } from '@ert78gb/ngx-select-ex';
+import { DragulaModule } from 'ng2-dragula';
+import { NgxSelectModule } from 'ngx-select-ex';
 import { NouisliderModule } from 'ng2-nouislider';
 import { ClipboardModule } from 'ngx-clipboard';
 
